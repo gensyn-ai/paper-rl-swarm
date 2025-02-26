@@ -1,0 +1,11 @@
+# RL Swarm Paper
+
+The recent success of DeepSeek-R1 highlights the potential of reinforcement learning (RL) in post-training LLMs, particularly for reasoning-intensive tasks such as mathematics where correctness can be algorithmically verified. In particular, by leveraging the GRPO algorithm introduced by Shao et al. [2024], the DeepSeek-R1-zero model [DeepSeek-AI, 2025] highlighted that models can self-evolve and develop reasoning capabilities without supervised fine-tuning (SFT) or even a critic model. These capabilities are achieved by leveraging a strong pre-trained LLM as a “base” model that serves as the starting point for post-training, and then allowing the model to learn through a repeated self-assessment process in GRPO. Intuitively, each self-assessment involves a three step process where the model: i) generates multiple responses for a given prompt, ii) computes re-wards individually for each of its generated responses using a rule-based system, and iii) compares the rewards for each individual response against the average reward across all responses it generated for said prompt.
+
+A natural next step is to ask: what if we allow models to not just learn alone but together with multiple peer models on the same tasks? Can this new dimension allow each model to train more efficiently, and unlock new learning patterns for the models? This report presents RL Swarm, an open and collaborative network where models perform post-training together with an algorithm based on GRPO.
+
+We compare models post-training on RL Swarm with the baseline of a model post-training by itself using GRPO. Our preliminary results show that models trained on the swarm produce better answers on unseen test data and generally provide more human-readable responses. These results open the path to many exciting research questions in the area of collaborative post-training using RL Swarm’s infrastructure.
+
+Code [here](https://github.com/gensyn-ai/rl-swarm).
+
+Blog post [here](https://www.gensyn.ai/articles/rl-swarm).
